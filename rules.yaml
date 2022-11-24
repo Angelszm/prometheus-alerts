@@ -1,0 +1,30 @@
+groups: 
+  - name: my-rules
+    rules: 
+    - record: job:node_memory_MemFree_bytes_percent
+      expr: 100 - (100 * node_memory_MemFree_bytes / node_memory_MemTotal_bytes)
+
+  - alert: NodeExporterDown
+    expr: up{job="Node_Exporter"} == 0
+    for: 1m
+
+    
+  rules:
+  - alert: [redact] server got many 4xx requests
+    annotations:
+      description: More than 20 4xx calls in the last 5 minutes
+      title: [redact] server got many 4xx requests
+    expr: (sum(increase(http_requests_total{code=~"4..",env="production",job="[redact]"}[5m])) or vector(0)) > 20
+    for: 1m
+    labels:
+      severity: critical
+      team: [redact]
+  - alert: [redact] server got some 5xx requests
+    annotations:
+      description: More than 1 5xx call in the last 5 minutes
+      title: [redact] server got some 5xx requests
+    expr: (sum(increase(http_requests_total{code=~"5..",env="production",job="[redact]"}[5m])) or vector(0)) > 1
+    for: 1m
+    labels:
+      severity: critical
+      team: [redact]
