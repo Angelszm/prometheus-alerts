@@ -40,9 +40,12 @@ Active alerts > ALERTS in metrics
 ### Metrics 
 - Node Exporter (Create metrics based on exporter)
 
-### Node Exporter 
+### Node Exporter  (Separate Deployment)
 Means to fetch metrics
+- collect the metrics data 
 - Need/run /metrics from daemonsets
+- Expose with /metrics endpoint
+
 Install Node Exporter 
 ```
 May be install node_exporter zip file or use node_exporter as service on k8s
