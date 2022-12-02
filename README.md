@@ -65,3 +65,5 @@ May be install node_exporter zip file or use node_exporter as service on k8s
 
 Ref: 
 https://github.com/Angelszm/prometheus-yaml
+
+Dashbaord: https://grafana.com/grafana/dashboards/8588-1-kubernetes-deployment-statefulset-daemonset-metrics/
